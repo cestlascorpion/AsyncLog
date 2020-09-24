@@ -39,11 +39,11 @@ public:
     static uint32_t buf_id();
 
 private:
-    uint32_t m_id;
-    uint32_t m_used;
-    uint32_t m_total;
-    std::unique_ptr<char[]> m_data;
-    STATUS m_status;
+    uint32_t _id;
+    uint32_t _used;
+    uint32_t _total;
+    std::unique_ptr<char[]> _data;
+    STATUS _status;
 };
 
 #endif // ASYNC_LOG_BUFFER_BLOCK_H

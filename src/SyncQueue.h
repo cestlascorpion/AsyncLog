@@ -34,15 +34,15 @@ private:
     bool canWrite();
 
 private:
-    uint32_t m_size;
-    FILE *m_file;
+    uint32_t _size;
+    FILE *_file;
 
-    uint32_t m_w_idx;
-    uint32_t m_f_idx;
-    std::vector<std::unique_ptr<BufferBlock>> m_array;
+    uint32_t _w_idx;
+    uint32_t _f_idx;
+    std::vector<std::unique_ptr<BufferBlock>> _array;
 
-    std::mutex m_mutex;
-    std::condition_variable_any m_write;
-    std::condition_variable_any m_flush;
+    std::mutex _mutex;
+    std::condition_variable_any _write;
+    std::condition_variable_any _flush;
 };
 #endif // ASYNC_LOG_SYNC_QUEUE_H

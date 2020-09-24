@@ -4,23 +4,23 @@
 #include <unistd.h>
 
 BufferBlock::BufferBlock()
-    : m_id(buf_id())
-    , m_used(0)
-    , m_total(MAX_BUF_LEN)
-    , m_data(new char[MAX_BUF_LEN]())
-    , m_status(FREE) {}
+    : _id(buf_id())
+    , _used(0)
+    , _total(MAX_BUF_LEN)
+    , _data(new char[MAX_BUF_LEN]())
+    , _status(FREE) {}
 
 BufferBlock::~BufferBlock() = default;
 
 uint32_t BufferBlock::Rest() const {
-    return m_total - m_used;
+    return _total - _used;
 }
 
 void BufferBlock::Append(const char *source, uint32_t length, bool &full) {
-    memcpy(m_data.get() + m_used, source, length);
-    m_used += length;
+    memcpy(_data.get() + _used, source, length);
+    _used += length;
     if (Rest() < MAX_BUF_LINE) {
-        m_status = FULL;
+        _status = FULL;
         full = true;
     } else {
         full = false;
@@ -28,17 +28,17 @@ void BufferBlock::Append(const char *source, uint32_t length, bool &full) {
 }
 
 void BufferBlock::Flush(FILE *file) {
-    fwrite(m_data.get(), 1, m_used, file);
-    m_used = 0;
-    m_status = FREE;
+    fwrite(_data.get(), 1, _used, file);
+    _used = 0;
+    _status = FREE;
 }
 
 BufferBlock::STATUS BufferBlock::Status() const {
-    return m_status;
+    return _status;
 }
 
 void BufferBlock::Finally() {
-    m_status = FINAL;
+    _status = FINAL;
 }
 
 uint32_t BufferBlock::buf_id() {
