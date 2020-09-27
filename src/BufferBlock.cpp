@@ -1,7 +1,10 @@
 #include "BufferBlock.h"
+
 #include <cstdio>
 #include <cstring>
 #include <unistd.h>
+
+namespace scorpion {
 
 BufferBlock::BufferBlock()
     : _id(buf_id())
@@ -45,3 +48,5 @@ uint32_t BufferBlock::buf_id() {
     static auto id = (uint32_t)getpid();
     return ++id;
 }
+
+} // ns

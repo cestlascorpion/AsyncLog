@@ -1,11 +1,12 @@
-#ifndef ASYNC_LOG_SYNC_QUEUE_H
-#define ASYNC_LOG_SYNC_QUEUE_H
+#pragma once
 
 #include <atomic>
 #include <condition_variable>
 #include <memory>
 #include <mutex>
 #include <vector>
+
+namespace scorpion {
 
 class BufferBlock;
 
@@ -45,4 +46,5 @@ private:
     std::condition_variable_any _write;
     std::condition_variable_any _flush;
 };
-#endif // ASYNC_LOG_SYNC_QUEUE_H
+
+} // namespace scorpion

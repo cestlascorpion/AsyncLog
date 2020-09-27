@@ -1,8 +1,11 @@
 #include "SyncQueue.h"
 #include "BufferBlock.h"
+
 #include <unistd.h>
 
 using namespace std;
+
+namespace scorpion {
 
 SyncQueue::SyncQueue()
     : _size((BUFFER_SIZE + BufferBlock::MAX_BUF_LEN - 1) / BufferBlock::MAX_BUF_LEN)
@@ -76,3 +79,5 @@ void SyncQueue::Finally() {
         _flush.notify_one();
     }
 }
+
+} // namespace scorpion

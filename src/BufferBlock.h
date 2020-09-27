@@ -1,8 +1,9 @@
-#ifndef ASYNC_LOG_BUFFER_BLOCK_H
-#define ASYNC_LOG_BUFFER_BLOCK_H
+#pragma once
 
 #include <cstdint>
 #include <memory>
+
+namespace scorpion {
 
 class BufferBlock {
 public:
@@ -46,4 +47,4 @@ private:
     STATUS _status;
 };
 
-#endif // ASYNC_LOG_BUFFER_BLOCK_H
+} // namespace scorpion

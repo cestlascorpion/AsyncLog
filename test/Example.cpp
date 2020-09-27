@@ -1,4 +1,5 @@
 #include "SyncQueue.h"
+
 #include <chrono>
 #include <thread>
 #include <vector>
@@ -6,9 +7,9 @@
 #define COUNT 10000
 
 using namespace std;
+using namespace scorpion;
 
 void produce(SyncQueue *log, const string &prefix, const string &suffix);
-
 void consume(SyncQueue *log);
 
 int main() {
